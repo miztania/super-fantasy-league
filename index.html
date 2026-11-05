@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#040806">
 <meta charset="utf-8">
-<title>Gaffer's Table</title>
+<title>Super Fantasy League</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,500;0,600;0,700;0,800;1,900&family=Orbitron:wght@700;800&family=Rajdhani:wght@500;600;700&display=swap">
@@ -920,7 +920,7 @@ function renderTitle(){
   $("#app").innerHTML=`
   <div style="padding-top:14px"><button class="btn sm" data-act="toLanding">Back to main menu</button></div><div class="hero">
     <div class="stack">
-      <h1 class="title">Gaffer's<br>Table</h1>
+      <h1 class="title">Super<br>Fantasy<br>League</h1>
       <p style="max-width:52ch;font-size:17px">Take a Premier League club. Spend the budget, set the formation, hire your staff, then play 38 matchweeks. Player stats move up and down with every game.</p>
       <div><span class="mock">${esc(DATA_NOTE)}</span></div>
       ${heroFan(sel)}
@@ -1699,7 +1699,7 @@ function renderFLeague(){
 function clubObj(id){const x=CLUB_DATA.find(c=>c[0]===id);return {id:x[0],name:x[1],short:x[2],c1:x[3],c2:x[4],rep:x[5],budget:x[6],stadium:x[7],cap:x[8],formation:x[9]}}
 function renderLanding(){
   UI.sel=UI.sel||"ARS";
-  $("#app").innerHTML=`<div class="hero"><div class="stack"><h1 class="title">Gaffer's<br>Table</h1><p style="max-width:52ch;font-size:17px">Pick 15 players from every club, lock in your team and score points from how they play each week. Open packs and trade cards to build your collection.</p><div><span class="mock">${esc(DATA_NOTE)}</span></div>${heroFan(clubObj(UI.sel))}</div>
+  $("#app").innerHTML=`<div class="hero"><div class="stack"><h1 class="title">Super<br>Fantasy<br>League</h1><p style="max-width:52ch;font-size:17px">Pick 15 players from every club, lock in your team and score points from how they play each week. Open packs and trade cards to build your collection.</p><div><span class="mock">${esc(DATA_NOTE)}</span></div>${heroFan(clubObj(UI.sel))}</div>
   <div class="stack"><section class="block stack" style="gap:12px"><h2 style="margin:0">Fantasy League</h2><p class="note">£100m budget, weekly lock-in, captain, chips, card packs, trades and a mini-league.</p><div class="field"><label class="label" for="fTeamName">Team name</label><input id="fTeamName" type="text" maxlength="28" value="${esc(UI.fteam||"Touchline Tacticians")}"></div><div class="row"><button class="btn big sun" data-act="fNew">Start fantasy game</button>${fhas()?`<button class="btn big sky" data-act="fCont">Continue</button>`:""}</div></section>
   
   <p class="note" style="color:var(--text-dim)">Fan project. Not affiliated with the Premier League, Fantasy Premier League or EA.</p></div></div>`;
@@ -1775,7 +1775,7 @@ Object.assign(A,{
     const shown=ids.map(id=>{const dup=owned(id);if(dup){const v=Math.round(fprice(P(id))*.5*10)/10;refund+=v;FL.bank=Math.round((FL.bank+v)*100)/100}else FL.cards[id]={src:"pack"};return {id,dup}});
     fsave();
     const st=$("#packStage");if(!st)return;
-    st.innerHTML=`<div class="flipgrid">${shown.map(s=>`<div class="flipw"><div class="flip"><div class="flip-in"><div class="flip-face back ${k}"><span>GT</span></div><div class="flip-face front">${fcard(P(s.id),{static:true})}</div></div></div><div class="fcmeta" style="justify-content:center">${s.dup?`<span class="tag warn">Duplicate, sold for ${m1(Math.round(fprice(P(s.id))*.5*10)/10)}</span>`:'<span class="tag good">New card</span>'}</div></div>`).join("")}</div><div class="row" style="justify-content:center;margin-top:16px"><button class="btn big sun" data-act="packClose">Done</button></div>`;
+    st.innerHTML=`<div class="flipgrid">${shown.map(s=>`<div class="flipw"><div class="flip"><div class="flip-in"><div class="flip-face back ${k}"><span>SFL</span></div><div class="flip-face front">${fcard(P(s.id),{static:true})}</div></div></div><div class="fcmeta" style="justify-content:center">${s.dup?`<span class="tag warn">Duplicate, sold for ${m1(Math.round(fprice(P(s.id))*.5*10)/10)}</span>`:'<span class="tag good">New card</span>'}</div></div>`).join("")}</div><div class="row" style="justify-content:center;margin-top:16px"><button class="btn big sun" data-act="packClose">Done</button></div>`;
     document.querySelectorAll(".flip").forEach((el,i)=>setTimeout(()=>el.classList.add("open"),350+i*650));
   },
   upPick(d){UI.upId=d.id;UI.upSpend=null;render();window.scrollTo(0,0)},

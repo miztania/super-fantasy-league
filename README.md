@@ -1,4 +1,4 @@
-# Gaffer's Table
+# Super Fantasy League
 
 A fan-made fantasy football game with player cards, packs, upgrades and trades. It uses mock data, with estimated ratings and made-up weekly results.
 
